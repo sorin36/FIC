@@ -353,9 +353,100 @@ int main(int argc, char* argv[])
 	 if (((x1-c)*(x1-c)+(y1-c)*(y1-c)) > c*c)
 	    return 0;
 	 if (((x2-c)*(x2-c)+(y2-c)*(y2-c)) > c*c)
-	    return 0;  
+	    return 0; 
+	 switch(directie){
+		 case right: if (x2>x1)  {
+				sprintf(buffer,"f");
+	    			delay((x2-x1)*v);
+	    			sprintf(buffer,"s");	
+			 }
+			 else {
+				sprintf(buffer,"b");
+	    			delay((x1-x2)*v);
+	    			sprintf(buffer,"s");    
+			 }
 	    
-	 sprintf(buffer,"fs");
+	 		if (y2<y1) {
+				sprintf(buffer,"l");
+				delay((y1-y2)*v);
+	    			sprintf(buffer,"s");
+			}
+			else {
+				sprintf(buffer,"r");
+				delay((y2-y1)*v);
+	    			sprintf(buffer,"s");
+			}
+			break;
+		case left: if (x2>x1)  {
+				sprintf(buffer,"b");
+	    			delay((x2-x1)*v);
+	    			sprintf(buffer,"s");	
+			 }
+			 else {
+				sprintf(buffer,"f");
+	    			delay((x1-x2)*v);
+	    			sprintf(buffer,"s");    
+			 }
+	    
+	 		if (y2<y1) {
+				sprintf(buffer,"r");
+				delay((y1-y2)*v);
+	    			sprintf(buffer,"s");
+			}
+			else {
+				sprintf(buffer,"l");
+				delay((y2-y1)*v);
+	    			sprintf(buffer,"s");
+			}
+			break;
+		case up: if (y2<y1) {
+				sprintf(buffer,"b");
+				delay((y1-y2)*v);
+	    			sprintf(buffer,"s");
+			 }
+			 else {
+				sprintf(buffer,"f");
+				delay((y2-y1)*v);
+	    			sprintf(buffer,"s");
+			 }
+			 if (x2>x1)  {
+				sprintf(buffer,"l");
+	    			delay((x2-x1)*v);
+	    			sprintf(buffer,"s");	
+			 }
+			 else {
+				sprintf(buffer,"r");
+	    			delay((x1-x2)*v);
+	    			sprintf(buffer,"s");    
+			 }
+		case down: if (y2<y1) {
+				sprintf(buffer,"f");
+				delay((y1-y2)*v);
+	    			sprintf(buffer,"s");
+			 }
+			 else {
+				sprintf(buffer,"b");
+				delay((y2-y1)*v);
+	    			sprintf(buffer,"s");
+			 }
+			 if (x2>x1)  {
+				sprintf(buffer,"r");
+	    			delay((x2-x1)*v);
+	    			sprintf(buffer,"s");	
+			 }
+			 else {
+				sprintf(buffer,"l");
+	    			delay((x1-x2)*v);
+	    			sprintf(buffer,"s");    
+			 }
+	    
+	 		
+			break;
+			 
+		
+	  
+	
+		 
 	 n = write(sockfd,buffer,strlen(buffer));
 	 bzero(buffer,256);
     }

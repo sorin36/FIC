@@ -1,9 +1,7 @@
 #include <sstream>
 #include <string>
 #include <iostream>
-//#include <opencv2\highgui.h>
 #include "opencv2/highgui/highgui.hpp"
-//#include <opencv2\cv.h>
 #include "opencv2/opencv.hpp"
 #include <stdio.h>
 #include <stdlib.h>
@@ -52,11 +50,6 @@ int S_MAX = 256;
 int V_MIN = 0;
 int V_MAX = 256;
 
-
-
-
-
-
 //default capture width and height
 const int FRAME_WIDTH = 640;
 const int FRAME_HEIGHT = 480;
@@ -71,28 +64,6 @@ const std::string windowName1 = "HSV Image";
 const std::string windowName2 = "Thresholded Image";
 const std::string windowName3 = "After Morphological Operations";
 const std::string trackbarWindowName = "Trackbars";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 void on_mouse(int e, int x, int y, int d, void *ptr)
@@ -112,9 +83,6 @@ void on_trackbar(int, void*)
 
 string intToString(int number) {
 
-
-
-
     std::stringstream ss;
     ss << number;
     return ss.str();
@@ -123,22 +91,11 @@ string intToString(int number) {
 
 void createTrackbars() {
     //create window for trackbars
-
-
-
-
     namedWindow(trackbarWindowName, 0);
     //create memory to store trackbar name on window
     char TrackbarName[50];
- /*
-    sprintf(TrackbarName, "H_MIN", H_MIN);
-    sprintf(TrackbarName, "H_MAX", H_MAX);
-    sprintf(TrackbarName, "S_MIN", S_MIN);
-    sprintf(TrackbarName, "S_MAX", S_MAX);
-    sprintf(TrackbarName, "V_MIN", V_MIN);
-    sprintf(TrackbarName, "V_MAX", V_MAX);
- */
-	 sprintf(TrackbarName, "H_MIN");
+
+    sprintf(TrackbarName, "H_MIN");
     sprintf(TrackbarName, "H_MAX");
     sprintf(TrackbarName, "S_MIN");
     sprintf(TrackbarName, "S_MAX");
@@ -156,9 +113,6 @@ void createTrackbars() {
     createTrackbar("S_MAX", trackbarWindowName, &S_MAX, S_MAX, on_trackbar);
     createTrackbar("V_MIN", trackbarWindowName, &V_MIN, V_MAX, on_trackbar);
     createTrackbar("V_MAX", trackbarWindowName, &V_MAX, V_MAX, on_trackbar);
-
-
-
 
 }
 void drawObject(int x, int y, Mat &frame) {
@@ -209,15 +163,8 @@ void morphOps(Mat &thresh) {
     erode(thresh, thresh, erodeElement);
 
 
-
-
     dilate(thresh, thresh, dilateElement);
     dilate(thresh, thresh, dilateElement);
-
-
-
-
-
 
 }
 void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
@@ -256,9 +203,6 @@ void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
    			 }
    			 else objectFound = false;
 
-
-
-
    		 }
    		 //let user know you found an object
    		 if (objectFound == true) {
@@ -266,27 +210,12 @@ void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
    			 //draw object location on screen
    			 //cout << x << "," << y;
    			 drawObject(x, y, cameraFeed);
-
-
    		 }
-
-
-
 
    	 }
    	 else putText(cameraFeed, "TOO MUCH NOISE! ADJUST FILTER", Point(0, 50), 1, 2, Scalar(0, 0, 255), 2);
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 void error(const char *msg)
@@ -296,20 +225,14 @@ void error(const char *msg)
 }
 
 
-
-
-
-
 int sockfd,n,portno;
 struct sockaddr_in serv_addr;
 struct hostent *server;
 char buffer[256];
 
 
-
 void socket(){
-    
-    
+ 
 	char port[]="20232";
 	char hostname[]="193.226.12.217";
     
@@ -330,51 +253,8 @@ void socket(){
 	serv_addr.sin_port = htons(portno);
 	if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)
     	error("ERROR connecting");
-   	 
-	//printf("Please enter the message: ");
-	//bzero(buffer,256);
-    
-	//printf("am iesit");
-    
-	//fgets(buffer,255,stdin);
-	//strcpy(buffer,"fs");
-	//n = write(sockfd,buffer,strlen(buffer));
-    
-	//if (n < 0)
-	// 	error("ERROR writing to socket");
-	//bzero(buffer,256);
-	//n = read(sockfd,buffer,255);
-	//if (n < 0)
-	// 	error("ERROR reading from socket");
-	//printf("%s\n",buffer);
-	//close(sockfd);
-	//return 0;
-    
+  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 int main(int argc, char* argv[])
@@ -418,7 +298,6 @@ int main(int argc, char* argv[])
     
     while (1) {
 
-
 	 //n = write(sockfd,buffer,strlen(buffer));
    	 //store image to matrix
    	 capture.read(cameraFeed);
@@ -427,8 +306,8 @@ int main(int argc, char* argv[])
    	 //filter HSV image between values and store filtered image to
    	 //threshold matrix
    
-   	 inRange(HSV, Scalar(bH_MIN, bS_MIN, bV_MIN), Scalar(bH_MAX, bS_MAX, bV_MAX), threshold);
-	//inRange(HSV, Scalar(rH_MIN, rS_MIN, rV_MIN), Scalar(rH_MAX, rS_MAX, rV_MAX), threshold);
+   	 //inRange(HSV, Scalar(bH_MIN, bS_MIN, bV_MIN), Scalar(bH_MAX, bS_MAX, bV_MAX), threshold);
+	 inRange(HSV, Scalar(rH_MIN, rS_MIN, rV_MIN), Scalar(rH_MAX, rS_MAX, rV_MAX), threshold);
    	 //perform morphological operations on thresholded image to eliminate noise
    	 //and emphasize the filtered object(s)
    	 
@@ -446,16 +325,8 @@ int main(int argc, char* argv[])
   	y1=y;
 	}
    	 //show frames
-   /*
-   	 imshow(windowName2, threshold);
-   	 imshow(windowName, cameraFeed);
-   	 imshow(windowName1, HSV);
-   	 setMouseCallback("Original Image", on_mouse, &p);
-   	 //delay 30ms so that screen can refresh.
-   	 //image will not appear without this waitKey() command
-   	 waitKey(30);
-   */
-      inRange(HSV, Scalar(rH_MIN, rS_MIN, rV_MIN), Scalar(rH_MAX, rS_MAX, rV_MAX), threshold);
+
+         inRange(HSV, Scalar(gH_MIN, gS_MIN, gV_MIN), Scalar(gH_MAX, gS_MAX, gV_MAX), threshold);
    	 //perform morphological operations on thresholded image to eliminate noise
    	 //and emphasize the filtered object(s)
    	 if (useMorphOps)
@@ -481,7 +352,3 @@ int main(int argc, char* argv[])
  
     return 0;
 }
-
-
-
-

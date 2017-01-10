@@ -261,6 +261,7 @@ int main(int argc, char* argv[])
 {
  
   int x1,x2,y1,y2, c;
+	char directie='r';
     //some boolean variables for different functionality within this
     //program
     bool trackObjects = true;
@@ -355,7 +356,7 @@ int main(int argc, char* argv[])
 	 if (((x2-c)*(x2-c)+(y2-c)*(y2-c)) > c*c)
 	    return 0; 
 	 switch(directie){
-		 case right: if (x2>x1)  {
+		 case 'r': if (x2>x1)  {
 				sprintf(buffer,"f");
 	    			delay((x2-x1)*v);
 	    			sprintf(buffer,"s");	
@@ -363,21 +364,23 @@ int main(int argc, char* argv[])
 			 else {
 				sprintf(buffer,"b");
 	    			delay((x1-x2)*v);
-	    			sprintf(buffer,"s");    
+	    			sprintf(buffer,"s");   
 			 }
 	    
 	 		if (y2<y1) {
 				sprintf(buffer,"l");
 				delay((y1-y2)*v);
 	    			sprintf(buffer,"s");
+				directie='d';
 			}
 			else {
 				sprintf(buffer,"r");
 				delay((y2-y1)*v);
 	    			sprintf(buffer,"s");
+				directie='u'
 			}
 			break;
-		case left: if (x2>x1)  {
+		case 'l': if (x2>x1)  {
 				sprintf(buffer,"b");
 	    			delay((x2-x1)*v);
 	    			sprintf(buffer,"s");	
@@ -392,14 +395,16 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"r");
 				delay((y1-y2)*v);
 	    			sprintf(buffer,"s");
+				directie='d';
 			}
 			else {
 				sprintf(buffer,"l");
 				delay((y2-y1)*v);
 	    			sprintf(buffer,"s");
+				directie='u';
 			}
 			break;
-		case up: if (y2<y1) {
+		case 'u': if (y2<y1) {
 				sprintf(buffer,"b");
 				delay((y1-y2)*v);
 	    			sprintf(buffer,"s");
@@ -413,13 +418,15 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"l");
 	    			delay((x2-x1)*v);
 	    			sprintf(buffer,"s");	
+				directie='r';
 			 }
 			 else {
 				sprintf(buffer,"r");
 	    			delay((x1-x2)*v);
-	    			sprintf(buffer,"s");    
+	    			sprintf(buffer,"s");  
+				directie='l';
 			 }
-		case down: if (y2<y1) {
+		case 'd': if (y2<y1) {
 				sprintf(buffer,"f");
 				delay((y1-y2)*v);
 	    			sprintf(buffer,"s");
@@ -432,15 +439,16 @@ int main(int argc, char* argv[])
 			 if (x2>x1)  {
 				sprintf(buffer,"r");
 	    			delay((x2-x1)*v);
-	    			sprintf(buffer,"s");	
+	    			sprintf(buffer,"s");
+				directie='r';
 			 }
 			 else {
 				sprintf(buffer,"l");
 	    			delay((x1-x2)*v);
-	    			sprintf(buffer,"s");    
+	    			sprintf(buffer,"s");  
+				directie='l';
 			 }
-	    
-	 		
+
 			break;
 			 
 		

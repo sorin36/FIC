@@ -289,17 +289,16 @@ int main(int argc, char* argv[])
     //all of our operations will be performed within this loop
  
   socket();
-  bzero(buffer,256);
-  sprintf(buffer,"fs");
+ 
+ // sprintf(buffer,"fs");
  
   //strcpy(buffer,"fs");
   //n = write(sockfd,buffer,strlen(buffer));
-  n = write(sockfd,buffer,strlen(buffer));
+ // n = write(sockfd,buffer,strlen(buffer));
     
     while (1) {
 	
 	
-	 //n = write(sockfd,buffer,strlen(buffer));
    	 //store image to matrix
    	 capture.read(cameraFeed);
    	 //convert frame from BGR to HSV colorspace
@@ -349,8 +348,16 @@ int main(int argc, char* argv[])
    	 //delay 30ms so that screen can refresh.
    	 //image will not appear without this waitKey() command
    	 waitKey(30);
+	    //verificare pozitie
+	 
 	 if (((x1-c)*(x1-c)+(y1-c)*(y1-c)) > c*c)
 	    return 0;
+	 if (((x2-c)*(x2-c)+(y2-c)*(y2-c)) > c*c)
+	    return 0;  
+	    
+	 sprintf(buffer,"fs");
+	 n = write(sockfd,buffer,strlen(buffer));
+	 bzero(buffer,256);
     }
     return 0;
    

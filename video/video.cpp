@@ -260,7 +260,7 @@ void socket(){
 int main(int argc, char* argv[])
 {
  
-  int x1,x2,y1,y2;
+  int x1,x2,y1,y2, c;
     //some boolean variables for different functionality within this
     //program
     bool trackObjects = true;
@@ -297,7 +297,8 @@ int main(int argc, char* argv[])
   n = write(sockfd,buffer,strlen(buffer));
     
     while (1) {
-
+	
+	
 	 //n = write(sockfd,buffer,strlen(buffer));
    	 //store image to matrix
    	 capture.read(cameraFeed);
@@ -348,7 +349,9 @@ int main(int argc, char* argv[])
    	 //delay 30ms so that screen can refresh.
    	 //image will not appear without this waitKey() command
    	 waitKey(30);
+	 if (((x1-c)*(x1-c)+(y1-c)*(y1-c)) > c*c)
+	    return 0;
     }
- 
     return 0;
+   
 }

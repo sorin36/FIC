@@ -357,95 +357,159 @@ int main(int argc, char* argv[])
 	    return 0; 
 	 switch(directie){
 		 case 'r': if (x2>x1)  {
-				sprintf(buffer,"f");
+				sprintf(buffer,"f");	 
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 	    			delay((x2-x1)*v);
-	    			sprintf(buffer,"s");	
+	    			sprintf(buffer,"s");
+			 	n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 			 }
 			 else {
 				sprintf(buffer,"b");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 	    			delay((x1-x2)*v);
-	    			sprintf(buffer,"s");   
+	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 			 }
 	    
 	 		if (y2<y1) {
 				sprintf(buffer,"l");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				delay((y1-y2)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				directie='d';
 			}
 			else {
 				sprintf(buffer,"r");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				delay((y2-y1)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				directie='u'
 			}
 			break;
 		case 'l': if (x2>x1)  {
 				sprintf(buffer,"b");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 	    			delay((x2-x1)*v);
-	    			sprintf(buffer,"s");	
+	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 			 }
 			 else {
 				sprintf(buffer,"f");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 	    			delay((x1-x2)*v);
-	    			sprintf(buffer,"s");    
+	    			sprintf(buffer,"s");  
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 			 }
 	    
 	 		if (y2<y1) {
 				sprintf(buffer,"r");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				delay((y1-y2)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				directie='d';
 			}
 			else {
 				sprintf(buffer,"l");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				delay((y2-y1)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				directie='u';
 			}
 			break;
 		case 'u': if (y2<y1) {
 				sprintf(buffer,"b");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				delay((y1-y2)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 			 }
 			 else {
 				sprintf(buffer,"f");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				delay((y2-y1)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 			 }
 			 if (x2>x1)  {
 				sprintf(buffer,"l");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 	    			delay((x2-x1)*v);
-	    			sprintf(buffer,"s");	
+	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				directie='r';
 			 }
 			 else {
 				sprintf(buffer,"r");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 	    			delay((x1-x2)*v);
-	    			sprintf(buffer,"s");  
+	    			sprintf(buffer,"s"); 
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				directie='l';
 			 }
 		case 'd': if (y2<y1) {
 				sprintf(buffer,"f");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				delay((y1-y2)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 			 }
 			 else {
 				sprintf(buffer,"b");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				delay((y2-y1)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 			 }
 			 if (x2>x1)  {
 				sprintf(buffer,"r");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 	    			delay((x2-x1)*v);
 	    			sprintf(buffer,"s");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				directie='r';
 			 }
 			 else {
 				sprintf(buffer,"l");
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 	    			delay((x1-x2)*v);
 	    			sprintf(buffer,"s");  
+				n = write(sockfd,buffer,strlen(buffer));
+			 	bzero(buffer,256);
 				directie='l';
 			 }
 
@@ -454,9 +518,8 @@ int main(int argc, char* argv[])
 		
 	  
 	
-		 
-	 n = write(sockfd,buffer,strlen(buffer));
-	 bzero(buffer,256);
+	
+	 
     }
     return 0;
    

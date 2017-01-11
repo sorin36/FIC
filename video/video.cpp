@@ -260,7 +260,7 @@ void socket(){
 int main(int argc, char* argv[])
 {
  
-  int x1,x2,y1,y2, c;
+  int x1,x2,y1,y2, c, timp_int90;
 	char directie='r';
     //some boolean variables for different functionality within this
     //program
@@ -379,7 +379,7 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"l");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
-				delay((y1-y2)*v);
+				delay(timp_int90);
 	    			sprintf(buffer,"s");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
@@ -389,7 +389,7 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"r");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
-				delay((y2-y1)*v);
+				delay(timp_int90);
 	    			sprintf(buffer,"s");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
@@ -419,7 +419,7 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"r");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
-				delay((y1-y2)*v);
+				delay(timp_int90);
 	    			sprintf(buffer,"s");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
@@ -429,7 +429,7 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"l");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
-				delay((y2-y1)*v);
+				delay(timp_int90);
 	    			sprintf(buffer,"s");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
@@ -458,7 +458,7 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"l");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
-	    			delay((x2-x1)*v);
+	    			delay(timp_int90);
 	    			sprintf(buffer,"s");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
@@ -468,7 +468,7 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"r");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
-	    			delay((x1-x2)*v);
+	    			delay(timp_int90);
 	    			sprintf(buffer,"s"); 
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
@@ -496,7 +496,7 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"r");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
-	    			delay((x2-x1)*v);
+	    			delay(timp_int90);
 	    			sprintf(buffer,"s");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
@@ -506,7 +506,7 @@ int main(int argc, char* argv[])
 				sprintf(buffer,"l");
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
-	    			delay((x1-x2)*v);
+	    			delay(timp_int90);
 	    			sprintf(buffer,"s");  
 				n = write(sockfd,buffer,strlen(buffer));
 			 	bzero(buffer,256);
